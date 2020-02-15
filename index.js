@@ -20,15 +20,7 @@ const driver = neo4j.driver("bolt://localhost:7687", neo4j.auth.basic("neo4j", "
 const session = driver.session();
 
 
-mongoose.connect('mongodb://localhost:27017/online_entertainment');
-mongoose.connection.on('connected', () => {
-    console.log("Mongodb connected");
-});
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "http://localhost"); 
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
+
 
 redisClient.on('connect', function() {
     console.log('Redis connected');

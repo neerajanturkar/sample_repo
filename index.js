@@ -5,7 +5,7 @@ const redis = require("redis")
 const neo4j = require('neo4j-driver');
 
 const app = express();
-const PORT = 5000;
+const PORT = 3200;
 const redisClient = redis.createClient();
 
 const user = require("./api/user");

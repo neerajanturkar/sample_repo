@@ -16,10 +16,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use('/api/tile', tile); 
 app.use('/api/user', user);
+
+//neo4j connection
 const driver = neo4j.driver("bolt://localhost:7687", neo4j.auth.basic("neo4j", "Anturkar@05"));
 const session = driver.session();
 
 
+//mongo connection
 mongoose.connect('mongodb://localhost:27017/online_entertainment');
 mongoose.connection.on('connected', () => {
     console.log("Mongodb connected");
@@ -30,6 +33,7 @@ app.use(function(req, res, next) {
     next();
 });
 
+//redis connection
 redisClient.on('connect', function() {
     console.log('Redis connected');
 });
